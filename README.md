@@ -14,3 +14,5 @@ network={
 }
 
 ```
+
+Change keyboard config from UK via raspi-config
