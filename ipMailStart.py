@@ -3,13 +3,15 @@ import smtplib
 from email.mime.text import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 import datetime
+import ConfigParser
 
 # Change to your own account information
 # Account Information
-to = 'XXXXXXXX' # Email to send to.
-gmail_user = 'XXXXXXXX' # Email to send from. (MUST BE GMAIL)
-gmail_password = 'XXXXXXXXt' # Gmail password.
-smtpserver = smtplib.SMTP('smtp.gmail.com', 587) # Server to use.
+config = ConfigParser.ConfigParser()
+config.read("./.piScriptsConfig")
+gmail_user = config.get("email","gmail_user")
+gmail_password = config.get("email","gmail_password")
+to = config.get("ipMailStart","to")
 
 smtpserver.ehlo()  # Says 'hello' to the server
 smtpserver.starttls()  # Start TLS encryption
