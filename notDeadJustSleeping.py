@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# Physical Config
+# Switch connecting #19 pin and Ground
+# LED Lights on pins 5, 6, and 13
+
 import RPi.GPIO as GPIO
 import time
 import subprocess
@@ -69,11 +74,26 @@ def notDead():
 	GPIO.output(ledG, True)
 	time.sleep(1)
 	GPIO.output(ledG, False)
+	btnPress = False
 
 # Loop until a switch pressed
-btnPress = False
-while btnPress == False:
-	btnPress = monitorSwitch(5)   # Monitor switches
 
+def runOnce():
+	btnPress = False
+	while btnPress == False:
+		btnPress = monitorSwitch(5)   # Monitor switches
+
+def runMany():
+	btnPress = False
+	while True:
+		if btnPress == False:
+			btnPress = monitorSwitch(5)   # Monitor switches
+		else:
+			btnPress = False
+
+# Comment out which function to use
+
+#runOnce()
+runMany()
 # End and cleanup
 GPIO.cleanup()

@@ -1,0 +1,7 @@
+# Rename to .piScriptsConfig
+[email]
+gmail_user = XXXXX@gmail.com
+gmail_password = XXXXX
+
+[notDead]
+to = XXXXX
