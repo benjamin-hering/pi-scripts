@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import subprocess
 import smtplib
 from email.mime.text import MIMEText
@@ -8,10 +9,11 @@ import ConfigParser
 # Change to your own account information
 # Account Information
 config = ConfigParser.ConfigParser()
-config.read("./.piScriptsConfig")
+config.read("/home/pi/pi-scripts/.piScriptsConfig")
 gmail_user = config.get("email","gmail_user")
 gmail_password = config.get("email","gmail_password")
 to = config.get("ipMailStart","to")
+smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
 
 smtpserver.ehlo()  # Says 'hello' to the server
 smtpserver.starttls()  # Start TLS encryption
